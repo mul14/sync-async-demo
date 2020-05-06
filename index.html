@@ -12,7 +12,7 @@
 <body>
 
   <div class="container mt-3">
-    <h1 class="my-3">Synchronous VS Asynchronous</h1>
+    <h1 class="h2 my-3">Synchronous VS Asynchronous</h1>
 
     <p>
       Data will be loaded from
@@ -23,11 +23,16 @@
       check the waterfall <a href="screenshot.png" title="Google Chrome Developer Tools">(screenshot)</a>.
     </p>
 
-    <button id="syncBtn" class="btn btn-block btn-outline-secondary">
+    <div class="py-3 mb-2 border border-secondary rounded text-center text-muted">
+      This counter will "freeze" when synchronous process happens
+      <div id="counter" class="h2 m-0 text-dark">0</div>
+    </div>
+
+    <button id="syncBtn" class="btn btn-block btn-secondary">
       Load Synchronously
     </button>
 
-    <button id="asyncBtn" class="btn btn-block btn-outline-secondary">
+    <button id="asyncBtn" class="btn btn-block btn-secondary">
       Load Asynchronously
     </button>
 
@@ -79,6 +84,10 @@
         http.getAsync('/users')
       })
 
+      const counter = document.querySelector('#counter')
+      const random = () => Math.floor(Math.random() * Math.floor(999))
+
+      setInterval(() => counter.innerHTML = random(), 600)
 
     })()
 
